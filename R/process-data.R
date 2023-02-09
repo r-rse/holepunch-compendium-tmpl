@@ -8,11 +8,6 @@
 #' @return `data` with variable `system_size` recoded for
 #' plotting
 #' @export
-#' @examples {
-#' data <- readr::read_csv(system.file("testdata", "gillespie.csv",
-#' package = "rrcompendium"))
-#' recode_system_size(data)
-#' }
 recode_system_size <- function(data){
     dplyr::mutate(data,
            system_size = dplyr::recode(system_size,
