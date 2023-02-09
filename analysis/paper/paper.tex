@@ -1,17 +1,13 @@
-\documentclass[3p]{elsarticle} %review=doublespace preprint=single 5p=2 column
+\documentclass[preprint, 3p,
+authoryear]{elsarticle} %review=doublespace preprint=single 5p=2 column
 %%% Begin My package additions %%%%%%%%%%%%%%%%%%%
+
 \usepackage[hyphens]{url}
 
 
-
 \usepackage{lineno} % add
-\providecommand{\tightlist}{%
-  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
-\bibliographystyle{elsarticle-harv}
-\biboptions{sort&compress} % For natbib
 \usepackage{graphicx}
-\usepackage{booktabs} % book-quality tables
 %%%%%%%%%%%%%%%% end my additions to header
 
 \usepackage[T1]{fontenc}
@@ -33,16 +29,10 @@
 \fi
 % use microtype if available
 \IfFileExists{microtype.sty}{\usepackage{microtype}}{}
+\usepackage[]{natbib}
+\bibliographystyle{plainnat}
+
 \usepackage{graphicx}
-% We will generate all images so they have a width \maxwidth. This means
-% that they will get their normal width if they fit onto the page, but
-% are scaled down if they would overflow the margins.
-\makeatletter
-\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth
-\else\Gin@nat@width\fi}
-\makeatother
-\let\Oldincludegraphics\includegraphics
-\renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=\maxwidth]{#1}}
 \ifxetex
   \usepackage[setpagesize=false, % page size defined by xetex
               unicode=false, % unicode breaks when used with xetex
@@ -58,12 +48,18 @@
             urlcolor=blue,
             linkcolor=magenta,
             pdfborder={0 0 0}}
-\urlstyle{same}  % don't use monospace font for urls
 
 \setcounter{secnumdepth}{0}
 % Pandoc toggle for numbering sections (defaults to be off)
 \setcounter{secnumdepth}{0}
-% Pandoc header
+
+
+% tightlist command for lists without linebreak
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+
+
 
 \usepackage[nomarkers]{endfloat}
 \linenumbers
@@ -71,38 +67,40 @@
 \doublespacing
 
 \begin{document}
+
+
 \begin{frontmatter}
 
-  \title{From noise to knowledge: how randomness generates novel phenomena and
-reveals information}
-    \author[a]{Carl Boettiger}
+  \title{From noise to knowledge: how randomness generates novel
+phenomena and reveals information}
+    \author[University of California Berkeley]{Carl Boettiger%
+  %
+  }
    \ead{cboettig@berkeley.edu} 
-  
-      \address[a]{Dept of Environmental Science, Policy, and Management, University of
-California Berkeley, Berkeley CA 94720-3114, USA}
+      \affiliation[University of California Berkeley]{Dept of
+Environmental Science, Policy, and Management, University of California
+Berkeley, Berkeley CA 94720-3114, USA}
+    \cortext[cor1]{Corresponding author}
   
   \begin{abstract}
-  \hypertarget{abstract}{%
-  \section{Abstract}\label{abstract}}
-  
   Noise, as the term itself suggests, is most often seen a nuisance to
-  ecological insight, a inconvenient reality that must be acknowledged, a
-  haystack that must be stripped away to reveal the processes of interest
-  underneath. Yet despite this well-earned reputation, noise is often
-  interesting in its own right: noise can induce novel phenomena that
-  could not be understood from some underlying determinstic model alone.
-  Nor is all noise the same, and close examination of differences in
-  frequency, color or magnitude can reveal insights that would otherwise
-  be inaccessible. Yet with each aspect of stochasticity leading to some
-  new or unexpected behavior, the time is right to move beyond the
-  familiar refrain of ``everything is important'' (Bjørnstad and Grenfell
-  2001). Stochastic phenomena can suggest new ways of inferring process
-  from pattern, and thus spark more dialog between theory and empirical
-  perspectives that best advances the field as a whole. I highlight a few
-  compelling examples, while observing that the study of stochastic
-  phenomena are only beginning to make this translation into empirical
-  inference. There are rich opportunities at this interface in the years
-  ahead.\\
+  ecological insight, a inconvenient reality that must be acknowledged,
+  a haystack that must be stripped away to reveal the processes of
+  interest underneath. Yet despite this well-earned reputation, noise is
+  often interesting in its own right: noise can induce novel phenomena
+  that could not be understood from some underlying determinstic model
+  alone. Nor is all noise the same, and close examination of differences
+  in frequency, color or magnitude can reveal insights that would
+  otherwise be inaccessible. Yet with each aspect of stochasticity
+  leading to some new or unexpected behavior, the time is right to move
+  beyond the familiar refrain of ``everything is important''
+  \citep{Bjornstad2001}. Stochastic phenomena can suggest new ways of
+  inferring process from pattern, and thus spark more dialog between
+  theory and empirical perspectives that best advances the field as a
+  whole. I highlight a few compelling examples, while observing that the
+  study of stochastic phenomena are only beginning to make this
+  translation into empirical inference. There are rich opportunities at
+  this interface in the years ahead.
   \end{abstract}
   
  \end{frontmatter}
@@ -114,26 +112,26 @@ California Berkeley, Berkeley CA 94720-3114, USA}
 nuisance}\label{introduction-noise-the-nuisance}}
 
 To many, stochasticity, or more simply, noise, is just that -- something
-which obscures patterns we are trying to infer (Knape and de Valpine
-2011); and an ever richer batteries of statistical methods are developed
-largely in an attempt to strip away this undesirable randomness to
-reveal the patterns beneath (Coulson 2001). Over the past several
-decades, literature in stochasticity has transitioned from thinking of
-stochasticity in such terms; where noise is a nuisance that obscures the
-deterministic skeleton of the underlying mechanisms, to the recognition
-that stochasticity can itself be a mechanism for driving many
-interesting phenomena (Coulson, Rohani, and Pascual 2004). Yet this
-transition from \emph{noise the nuisance} to \emph{noise the creator} of
-ecological phenomena has had, with a few notable exceptions, relatively
-little impact in broader thinking about stochasticity. One of the most
-provocative of those exceptions has turned the classical notion of noise
-the nuisance on its head: recognizing that noise driven phenomena can
-become a tool to reveal underlying processes: to become \emph{noise the
-informer}. Here I argue that this third shift in perspective offers an
-opportunity to better bridge the divide between respective primarily
-theoretical and primarily empirical communities by seeing noise not as
-mathematical curiosity or statistical bugbear, but as a source for new
-opportunities for inference.
+which obscures patterns we are trying to infer \citep{Knape2011}; and an
+ever richer batteries of statistical methods are developed largely in an
+attempt to strip away this undesirable randomness to reveal the patterns
+beneath \citep{Coulson2001}. Over the past several decades, literature
+in stochasticity has transitioned from thinking of stochasticity in such
+terms; where noise is a nuisance that obscures the deterministic
+skeleton of the underlying mechanisms, to the recognition that
+stochasticity can itself be a mechanism for driving many interesting
+phenomena \citep{Coulson2004}. Yet this transition from \emph{noise the
+nuisance} to \emph{noise the creator} of ecological phenomena has had,
+with a few notable exceptions, relatively little impact in broader
+thinking about stochasticity. One of the most provocative of those
+exceptions has turned the classical notion of noise the nuisance on its
+head: recognizing that noise driven phenomena can become a tool to
+reveal underlying processes: to become \emph{noise the informer}. Here I
+argue that this third shift in perspective offers an opportunity to
+better bridge the divide between respective primarily theoretical and
+primarily empirical communities by seeing noise not as mathematical
+curiosity or statistical bugbear, but as a source for new opportunities
+for inference.
 
 In arguing for this shift, it essential to recognize this is a call for
 a bigger tent, not for the rejection of previous paradigms. What I will
@@ -163,16 +161,16 @@ and understand noisy processes, I will also restrict my focus to
 relatively simple models primarily from population ecology context.
 Simplicity not only makes examples (in equations and in code) more
 tractable but also allows us to focus on aspects that are germane to
-many contexts rather than unique to particular complexities (Levins
-1966; Bartlett 1960).
+many contexts rather than unique to particular complexities
+\citep{Levins1966, Bartlett1960}.
 
 Nevertheless, that complexity matters -- few themes have been better
-emphasized in the theoretical literature (Bjørnstad and Grenfell 2001).
-Both the foundational literature and recent research continue to echo
-the theme of understanding the impact different real world complexities
-have in stochastic dynamics. As such, we will rely on both textbooks and
-recent reviews to provide a proper treatment of these issues, and focus
-on broader trends.
+emphasized in the theoretical literature \citep{Bjornstad2001}. Both the
+foundational literature and recent research continue to echo the theme
+of understanding the impact different real world complexities have in
+stochastic dynamics. As such, we will rely on both textbooks and recent
+reviews to provide a proper treatment of these issues, and focus on
+broader trends.
 
 This review is structured into three sections: Origins of noise,
 emergent phenomena, and noise-driven inference. The first section lays
@@ -215,14 +213,14 @@ individual, to \(N-1\). Assuming each of these events are independent,
 this is a state-dependent Poisson process. The change in the probability
 of being in state \(N\) is given by the sum over the ways to enter the
 state, minus the ways to leave the state: a simple expression of
-probability balance known as the master equation (Kampen 2007). Note
-that in general this approach is equally applicable to stochastic
+probability balance known as the master equation \citep{vanKampen2007}.
+Note that in general this approach is equally applicable to stochastic
 transitions of any sort, not just step sizes of +/- 1 and not just birth
 and death events, but can include transitions between stage classes or
 trait values, including mutations to continuously-valued traits in
-evolutionary dynamics (e.g. Boettiger, Dushoff, and Weitz 2010).
+evolutionary dynamics \citep[e.g.][]{Boettiger2010}.
 
-The Gillespie (1977) provides an exact algorithmcfor simulating
+The \citet{Gillespie1977} provides an exact algorithmcfor simulating
 demographic stochasticity at an individual level.
 
 The algorithm is a simple and direct implementation of the master
@@ -242,8 +240,8 @@ approximation-free\footnote{that is, free from the approximation made by
 As our objective is to tie the origins of noise more closely to
 biological processes, it will be helpful to make the notion of a master
 equation concrete with a specific example. We will focus on the classic
-case of Levins (1969) patch model, to illustrate the Gillespie algorithm
-and the van Kampen system size expansion
+case of \citet{Levins1969} patch model, to illustrate the Gillespie
+algorithm and the van Kampen system size expansion
 
 \begin{align}
 \frac{\mathrm{d} n}{\mathrm{d} t} = \underbrace{c n \left(1 - \frac{n}{N}\right)}_{\textrm{birth}} - \underbrace{e n}_{\textrm{death}}, \label{levins}
@@ -256,7 +254,7 @@ patch that is simply proportional to the fraction of available patches,
 \(1 - n/N\).
 
 Figure 1 shows the results of two exact SSA simulations of the classic
-patch model of Levins (1969).
+patch model of \citet{Levins1969}.
 
 \begin{figure}
 \centering
@@ -285,9 +283,9 @@ the process of interest, and a rich array of statistical methods allow
 us to separate the one from the other in observations and experiments.
 By examining the origins of noise, we have seen that despite the complex
 ways in this noise can enter a model, that a Gaussian white-noise
-approximation (Kampen 2007; Black and McKane 2012) is often appropriate
+approximation \citep{vanKampen2007, Black2012} is often appropriate
 given a limit of a large system size -- a fact often invokedn implicitly
-but rarely derived explicitly from the theorems of Kurtz (1978) and
+but rarely derived explicitly from the theorems of \citet{Kurtz1978} and
 others.
 
 In this context, noise does not act to create phenomena of interest
@@ -307,75 +305,8 @@ and two anonymous reviewers. This work was supported in part by USDA
 National Institute of Food and Agriculture, Hatch project
 CA-B-INS-0162-H.
 
-\hypertarget{references}{%
-\section*{References}\label{references}}
-\addcontentsline{toc}{section}{References}
+\renewcommand\refname{References}
+\bibliography{refs.bib}
 
-\hypertarget{refs}{}
-\leavevmode\hypertarget{ref-Bartlett1960}{}%
-Bartlett, Maurice S. 1960. \emph{Stochastic population models in ecology
-and epidemiology}. London: Methuen; Wiley.
-
-\leavevmode\hypertarget{ref-Bjornstad2001}{}%
-Bjørnstad, O N, and Bryan T Grenfell. 2001. ``Noisy clockwork: time
-series analysis of population fluctuations in animals.'' \emph{Science
-(New York, N.Y.)} 293 (5530): 638--43.
-\url{https://doi.org/10.1126/science.1062226}.
-
-\leavevmode\hypertarget{ref-Black2012}{}%
-Black, Andrew J, and Alan J McKane. 2012. ``Stochastic formulation of
-ecological models and their applications.'' \emph{Trends in Ecology \&
-Evolution}, March, 1--9.
-\url{https://doi.org/10.1016/j.tree.2012.01.014}.
-
-\leavevmode\hypertarget{ref-Boettiger2010}{}%
-Boettiger, Carl, Jonathan Dushoff, and Joshua S. Weitz. 2010.
-``Fluctuation domains in adaptive evolution.'' \emph{Theoretical
-Population Biology} 77 (1): 6--13.
-\url{https://doi.org/10.1016/j.tpb.2009.10.003}.
-
-\leavevmode\hypertarget{ref-Coulson2001}{}%
-Coulson, T. 2001. ``Age, Sex, Density, Winter Weather, and Population
-Crashes in Soay Sheep.'' \emph{Science} 292 (5521): 1528--31.
-\url{https://doi.org/10.1126/science.292.5521.1528}.
-
-\leavevmode\hypertarget{ref-Coulson2004}{}%
-Coulson, Tim, Pejman Rohani, and Mercedes Pascual. 2004. ``Skeletons,
-noise and population growth: The end of an old debate?'' \emph{Trends in
-Ecology and Evolution} 19 (7): 359--64.
-\url{https://doi.org/10.1016/j.tree.2004.05.008}.
-
-\leavevmode\hypertarget{ref-Gillespie1977}{}%
-Gillespie, Daniel. 1977. ``Exact Stochastic Simulation of Coupled
-Chemical Reactions.'' \emph{Journal of Physical Chemistry} 81.25:
-2340--61.
-
-\leavevmode\hypertarget{ref-vanKampen2007}{}%
-Kampen, N.G. van. 2007. \emph{Stochastic Processes in Physics and
-Chemistry}. Third. Amsterdam, New York, Oxford: North-Holland Publishing
-Company.
-
-\leavevmode\hypertarget{ref-Knape2011}{}%
-Knape, Jonas, and de ValpinePerry. 2011. ``Are patterns of density
-dependence in the Global Population Dynamics Database driven by
-uncertainty about population abundance?'' \emph{Ecology Letters} 15 (1):
-17--23. \url{https://doi.org/10.1111/j.1461-0248.2011.01702.x}.
-
-\leavevmode\hypertarget{ref-Kurtz1978}{}%
-Kurtz, Thomas G. 1978. ``Strong Approximation Theorems for Density
-Dependent Markov Chains.'' \emph{Stochastic Processes and Their
-Applications} 6 (3): 223--40.
-\url{https://doi.org/10.1016/0304-4149(78)90020-0}.
-
-\leavevmode\hypertarget{ref-Levins1966}{}%
-Levins, Richard. 1966. ``The strategy of model building in population
-biology.'' \emph{American Scientist} 54 (4): 421--31.
-
-\leavevmode\hypertarget{ref-Levins1969}{}%
----------. 1969. ``Some demographic and genetic consequences of
-environmental heterogeneity for biological control.'' \emph{Bulletin of
-the Entomological Society of America} 15 (3): 237--40.
 
 \end{document}
-
-
